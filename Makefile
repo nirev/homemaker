@@ -32,11 +32,15 @@ build/$(appname)_linux_arm64.tar.gz: $(sources)
 	$(call tar,linux,arm64)
 
 # darwin builds
-darwin: build/$(appname)_darwin_amd64.tar.gz
+darwin: build/$(appname)_darwin_amd64.tar.gz build/$(appname)_darwin_arm64.tar.gz
 
 build/$(appname)_darwin_amd64.tar.gz: $(sources)
 	$(call build,darwin,amd64,)
 	$(call tar,darwin,amd64)
+	
+build/$(appname)_darwin_arm64.tar.gz: $(sources)
+	$(call build,darwin,arm64,)
+	$(call tar,darwin,arm64)
 
 # windows builds
 windows: build/$(appname)_windows_386.zip build/$(appname)_windows_amd64.zip
